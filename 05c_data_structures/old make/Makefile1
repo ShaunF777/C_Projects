@@ -1,0 +1,19 @@
+# C compiler we are using
+CC = gcc # https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html 
+
+# Adding compiler flags. More info for GCC CFLAGS https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html
+CFLAGS = -g -Wall -lc50# more info on makefiles https://www.gnu.org/software/make/manual/make.html#Simple-Makefile
+
+# the build target:
+TARGET = $(EXE) #$(EXE): This syntax is used to reference the value of the variable EXE. 
+# The dollar sign and parentheses indicate that EXE is a variable and its value will be substituted in place.
+
+all: $(TARGET) # When you run make, it will first check to see if $(TARGET) needs to be built 
+# (i.e., if it doesn't exist or is out of date compared to its prerequisites). 
+# If it does need to be built, make will take the necessary steps to build it.
+
+# Compilation rules:
+# $(TARGET): $(TARGET).c; This means the target is a going to be a .c file, no need to stipulate it
+# $(CC) $(CFLAGS) run the compiler with some flags
+#-o $(TARGET) $(TARGET).c $(LFLAGS) output a target file without the .c because this output is then raw
+$(TARGET): $(TARGET).c; $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LFLAGS)

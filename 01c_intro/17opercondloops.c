@@ -1,8 +1,17 @@
+/*Not a working file, but in c to add correct color.
+ This explains the most frequant used fundamentals and syntax for:
+ - Arithmatic Operators
+ - Conditional Statements
+ - Ternary Operators
+ - Nested If-Else Statements
+ - Switch Statements
+ - While, Do-while & For Loops
+ */
 #include <cs50.h>
 #include <stdio.h>
 
 // void is a place holder for "nothing" i.e. main has an int return value
-// void main(void) has not return(output) or arguments(inputs)
+// void main(void) has no return(output) or arguments(inputs)
 int main(void)
 {
     // Arithmatic Operators
@@ -22,7 +31,7 @@ int main(void)
 
 //Conditional Statements
 int z;
-if (boolean-expression) // Simple if then else conditional
+if (boolean-expression) // Simple if then else conditional 
     {
         z = x * 5;     // this runs if the bool expression is true
     }
@@ -99,19 +108,4 @@ for (int i = 0; i < 13; i++)    // 1st the statement(s) in start are executed
                                 // 4th bool-expr checked again, if true the loop is executed again
 }                               // this continues untill the bool-expr becomes false
 
-common cli utilities:
-mv - move or rename file
-mkdir - make directory
-rm - remove(delete)
-rmdir - remove directory
-ls - list files inside directory
 
-chmod
-sudo
-man
-ln
-clear
-touch
-diff
-telnet
-}

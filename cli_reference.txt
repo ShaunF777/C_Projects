@@ -1,0 +1,42 @@
+Common CLI (Command Line Interface) Utilities Reference
+-------------------------------------------------------
+
+mv      - Move or rename a file or directory.
+          Example: mv oldname.txt newname.txt
+
+mkdir   - Make (create) a new directory.
+          Example: mkdir new_folder
+
+rm      - Remove (delete) a file.
+          Example: rm file.txt
+
+rmdir   - Remove an empty directory.
+          Example: rmdir empty_folder
+
+ls      - List files and directories in the current directory.
+          Example: ls -l
+
+chmod   - Change file or directory permissions.
+          Example: chmod +x script.sh
+
+sudo    - Run a command as the superuser (administrator).
+          Example: sudo apt update
+
+man     - Show the manual (help) for a command.
+          Example: man ls
+
+ln      - Create links between files (hard or symbolic).
+          Example: ln -s target.txt shortcut.txt
+
+clear   - Clear the terminal screen.
+
+touch   - Create an empty file or update the timestamp of an existing file.
+          Example: touch newfile.txt
+
+diff    - Compare the contents of two files line by line.
+          Example: diff file1.txt file2.txt
+
+telnet  - Connect to another computer using the Telnet protocol (rarely used today).
+          Example: telnet towel.blinkenlights.nl
+
+-------------------------------------------------------

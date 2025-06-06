@@ -1,4 +1,4 @@
-// Determines the length of a string
+// Determines the length of a string without using a function
 #include <cs50.h>
 #include <stdio.h>
 
@@ -16,7 +16,7 @@ int main(void)
     printf("%i\n", n);
 }
 
-// Determines the length of a string using a function
+/* Determines the length of a string using a manual function
 
 #include <cs50.h>
 #include <stdio.h>
@@ -40,13 +40,13 @@ int string_length(string s)
         n++;
     }
     return n;
-}
+} */
 
-// Determines the length of a string using a function
+/* Determines the length of a string using strlen function
 
 #include <cs50.h>
 #include <stdio.h>
-#include <string.h>
+#include <string.h>  // strlen function works from this header
 
 int main(void)
 {
@@ -54,4 +54,4 @@ int main(void)
     string name = get_string("Name: ");
     int length = strlen(name);
     printf("%i\n", length);
-}
+} */

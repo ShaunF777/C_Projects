@@ -28,7 +28,31 @@ int main(void)
     printf("This program will guide you through basic C concepts with code, comments, and interactive input.\n");
     print_separator();
 
-    // 1. Input/Output and Variables
+    explain("// This is a single-line comment", "Comments are ignored by the compiler and help explain code to humans.");
+
+    // 1. Basic Data Types, Declarations and Variables
+    print_separator();
+    printf("1. Basic Data Types, Declarations and Variables\n");
+    explain("int x = 5;", "Declare an integer variable x and assign it the value 5.");
+    int x = 5;
+    printf("Declared x as an integer with value: %i\n", x);
+    explain("float y = 3.14;", "Declare a float variable y and assign it the value 3.14.");
+    float y = 3.14;
+    printf("Declared y as a float with value: %.2f\n", y);
+    explain("char z = 'A';", "Declare a char variable z and assign it the character 'A'.");
+    char z = 'A';
+    printf("Declared z as a char with value: %c\n", z);
+    explain("string name = \"Alice\";", "Declare a string variable name and assign it the value \"Alice\".");
+    string name = "Alice";
+    printf("Declared name as a string with value: %s\n", name);
+    explain("bool is_valid = true;", "Declare a boolean variable is_valid and assign it the value true.");
+    bool is_valid = true;
+    printf("Declared is_valid as a boolean with value: %s\n", "true");
+  
+
+    // 2. Input/Output and Headers
+    print_separator();
+    printf("2. Input/Output and Headers\n");
     explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions like get_string and get_int.");
     explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries. These libraries provide abstracted functions we need localy.");
 
@@ -36,46 +60,45 @@ int main(void)
     string answer = get_string("What's your name? ");
     printf("Hello, %s! Let's get started. It's best to follow the .c code while doing the exercise.\n", answer);
 
-    // 2. Arithmetic Operators
-    print_separator();
-    printf("2. Arithmetic Operators\n");
+    // 3. Arithmetic Operators
+    printf("3. Arithmetic Operators and syntax\n");
     explain("int x = get_int(\"x: \");\nint y = get_int(\"y: \");", "Prompt the user for two integers.");
-    int x = get_int("x: ");
-    int y = get_int("y: ");
+    int xi = get_int("x: ");
+    int yi = get_int("y: ");
 
     explain("printf(\"%i\\n\", x + y);", "Print the sum of x and y.");
-    printf("Sum: %i + %i = %i\n", x, y, x + y);
+    printf("Sum: %i + %i = %i\n", xi, yi, xi + yi);
 
     explain("printf(\"%i\\n\", x - y);", "Print the difference of x and y.");
-    printf("Difference: %i - %i = %i\n", x, y, x - y);
+    printf("Difference: %i - %i = %i\n", xi, yi, xi - yi);
 
     explain("printf(\"%i\\n\", x * y);", "Print the product of x and y.");
-    printf("Product: %i * %i = %i\n", x, y, x * y);
+    printf("Product: %i * %i = %i\n", xi, yi, xi * yi);
 
     explain("printf(\"%i\\n\", x / y);", "Print the integer division of x by y.");
-    if (y != 0)
-        printf("Integer division: %i / %i = %i In C, deviding integers will trunc all decimals.\n", x, y, x / y);
+    if (yi != 0)
+        printf("Integer division: %i / %i = %i In C, deviding integers will trunc all decimals.\n", xi, yi, xi / yi);
     else
         printf("Cannot divide by zero!\n");
 
     explain("printf(\"%i\\n\", x %% y);", "Print the remainder of x divided by y (modulo).");
-    if (y != 0)
-        printf("Modulo: %i %% %i = %i\n", x, y, x % y);
+    if (yi != 0)
+        printf("Modulo: %i %% %i = %i\n", xi, yi, xi % yi);
     else
         printf("Cannot modulo by zero!\n");
 
-    // 3. Typecasting for Floating Point Division
+    // 4. Typecasting for Floating Point Division
     print_separator();
-    printf("3. Typecasting for Floating Point Division\n");
+    printf("4. Typecasting for Floating Point Division\n");
     explain("float z = (float)x / (float)y;", "Convert x and y to float for decimal division.");
     if (y != 0)
         printf("Floating point division: %.2f / %.2f = %.5f\n", (float)x, (float)y, (float)x / (float)y);
     else
         printf("Cannot divide by zero!\n");
 
-    // 4. Conditionals
+    // 5. Conditionals
     print_separator();
-    printf("4. Conditionals\n");
+    printf("5. Conditionals\n");
     explain("if (x < y) ... else if (x > y) ... else ...", "Compare x and y and print the relationship.");
     printf("IF the condition(x < y) is true, THEN execute the following code, ELSE execute the following alternative code.\n");
     if (x < y)
@@ -97,11 +120,12 @@ int main(void)
     else
         printf("%i is equal to %i\n", x, y);
 
-    // 5. Logical Operators
+    // 6. Logical Operators
     print_separator();
-    printf("5. Logical Operators\n");
+    printf("6. Logical Operators\n");
     explain("if (x > 0 && y > 0) ...", "&& means AND. Checks if both x and(&&) y are positive.");
     prinf("Remember that C uses logical operators to combine conditions into one single condition.\n");
+    printf("Logical operators: && means AND, || means OR, ! means NOT.\n");
     if (x > 0 && y > 0)
         printf("Both x (%i) and y (%i) are positive.\n", x, y);
     else
@@ -152,9 +176,9 @@ int main(void)
         printf("x (%i) is greater than y (%i).\n", x, y);
     }
 
-    // 9. Functions
+    // 7. Functions
     print_separator();
-    printf("9. Functions\n");
+    printf("7. Functions\n");
     explain("int main(void)", "\"int\" Means it will return an integer value. \"main\"Is the primary function of program. "
            "\"(void)\" Means no initial arguments are passed into the function.\n");
     printf("The \"main\" function is where the program starts executing.\n");
@@ -170,12 +194,13 @@ int main(void)
     explain("void explain(const char *code, const char *comment)", "Defines a function to print code and comment, then wait for user input.");
     printf("The arguments passed in (const char *code, const char *comment) are each a string of characters used to explain the code and its purpose.\n");
     printf("This function prints a code line with a comment and waits for the user to press Enter.\n");
-  
+    explain("int add(int a, int b);", "This is a function prototype (declaration), telling the compiler that a function named 'add' exists and takes two int arguments.");
+    printf("You can declare a function at the top of your file, then define it later.\n");
 
-    // 11. 2D Output Example (Mario)
+    // 8. Nested for loops. 2D Output Example (Mario)
     print_separator();
-    printf("11. 2D Output Example (Mario)\n");
-    explain("for (int i = 0; i < n; i++) { for (int j = 0; j < n; j++) printf(\"#\"); printf(\"\\n\"); }", "Prints a square of # characters.");
+    printf("8. 2D Output Example (Mario)\n");
+    explain("for (int i = 0; i < n; i++) { for (int j = 0; j < n; j++) printf(\"#\"); printf(\"\\n\"); }", "Prints a square of # characters. The outer loop iterates over rows, and the inner loop iterates over columns.");
     int size = get_int("Enter a size for the square: ");
     for (int i = 0; i < size; i++)
     {
@@ -185,6 +210,7 @@ int main(void)
     }
 
     print_separator();
-    printf("End of interactive fundamentals demo!\n");
+    printf("We have covered some basics of C programming, including commenting, basic data types, heaaders for input/output, arithmetic operations, typecasting floats, conditionals, logical operators, functions and loops.\n");
+    printf("Thank you. This is the end of the fundamentals demo 01aTeachMeC. Please execute the 01aQuiz to test your knowledge?\n");
     return 0;
 }

@@ -33,7 +33,7 @@ int main(void)
         "e.g., strcmp(\"dog\", \"cat\") or strlen(\"hello\");"
     };
 
-    printf("Welcome to the C Fundamentals Quiz!\n");
+    printf("Welcome to another C Fundamentals Quiz! This quiz follows the learning program 01bTeachMeC.c\n");
     string name = get_string("What's your name? ");
     printf("Hello, %s! Let's test your C knowledge on the following:\n", name);
     for (int i = 0; i < total; i++)

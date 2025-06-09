@@ -1,0 +1,191 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+// Helper function to print code and comment, then wait for user
+void explain(const char *code, const char *comment)
+{
+    printf("\nCODE:    %s\n", code);
+    printf("COMMENT: %s\n", comment);
+    printf("Press Enter to continue...\n");
+    getchar();
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+void print_separator(void)
+{
+    printf("\n---------------------------------------------\n");
+}
+
+int main(void)
+{
+    print_separator();
+    printf("Welcome to the Interactive C Fundamentals Demo!\n");
+    printf("This program will guide you through basic C concepts with code, comments, and interactive input.\n");
+    print_separator();
+
+    // 1. Input/Output and Variables
+    explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions.");
+    explain("string answer = get_string(\"What's your name? \");", "Prompt the user for their name and store it as a string.");
+    string answer = get_string("What's your name? ");
+    printf("Hello, %s! Let's get started.\n", answer);
+
+    // 2. Arithmetic Operators
+    print_separator();
+    printf("2. Arithmetic Operators\n");
+    explain("int x = get_int(\"x: \");\nint y = get_int(\"y: \");", "Prompt the user for two integers.");
+    int x = get_int("x: ");
+    int y = get_int("y: ");
+
+    explain("printf(\"%i\\n\", x + y);", "Print the sum of x and y.");
+    printf("Sum: %i + %i = %i\n", x, y, x + y);
+
+    explain("printf(\"%i\\n\", x - y);", "Print the difference of x and y.");
+    printf("Difference: %i - %i = %i\n", x, y, x - y);
+
+    explain("printf(\"%i\\n\", x * y);", "Print the product of x and y.");
+    printf("Product: %i * %i = %i\n", x, y, x * y);
+
+    explain("printf(\"%i\\n\", x / y);", "Print the integer division of x by y.");
+    if (y != 0)
+        printf("Integer division: %i / %i = %i\n", x, y, x / y);
+    else
+        printf("Cannot divide by zero!\n");
+
+    explain("printf(\"%i\\n\", x %% y);", "Print the remainder of x divided by y (modulo).");
+    if (y != 0)
+        printf("Modulo: %i %% %i = %i\n", x, y, x % y);
+    else
+        printf("Cannot modulo by zero!\n");
+
+    // 3. Typecasting for Floating Point Division
+    print_separator();
+    printf("3. Typecasting for Floating Point Division\n");
+    explain("float z = (float)x / (float)y;", "Convert x and y to float for decimal division.");
+    if (y != 0)
+        printf("Floating point division: %.2f / %.2f = %.5f\n", (float)x, (float)y, (float)x / (float)y);
+    else
+        printf("Cannot divide by zero!\n");
+
+    // 4. Conditionals
+    print_separator();
+    printf("4. Conditionals\n");
+    explain("if (x < y) ... else if (x > y) ... else ...", "Compare x and y and print the relationship.");
+    if (x < y)
+        printf("%i is less than %i\n", x, y);
+    else if (x > y)
+        printf("%i is greater than %i\n", x, y);
+    else
+        printf("%i is equal to %i\n", x, y);
+
+    explain("if (x == y) ...", "Checks if x equals y.");
+    if (x == y)
+        printf("%i equals %i\n", x, y);
+    else
+        printf("%i does not equal %i\n", x, y);
+
+    explain("if (x != y) ...", "Checks if x is not equal to y.");
+    if (x != y)
+        printf("%i is not equal to %i\n", x, y);
+    else
+        printf("%i is equal to %i\n", x, y);
+
+    // 5. Logical Operators
+    print_separator();
+    printf("5. Logical Operators\n");
+    explain("if (x > 0 && y > 0) ...", "Checks if both x and y are positive.");
+    if (x > 0 && y > 0)
+        printf("Both x and y are positive.\n");
+    else
+        printf("At least one of x or y is not positive.\n");
+
+    explain("if (x > 0 || y > 0) ...", "Checks if at least one of x or y is positive.");
+    if (x > 0 || y > 0)
+        printf("At least one of x or y is positive.\n");
+    else
+        printf("Neither x nor y is positive.\n");
+
+    // 6. Ternary Operator
+    print_separator();
+    printf("6. Ternary Operator\n");
+    explain("int max = (x > y) ? x : y;", "Assigns the greater of x or y to max.");
+    int max = (x > y) ? x : y;
+    printf("The greater value is: %i\n", max);
+
+    // 7. Switch Statement
+    print_separator();
+    printf("7. Switch Statement\n");
+    explain("switch (n) { case ... }", "Executes code based on the value of n.");
+    int n = get_int("Enter a number (1-3): ");
+    switch (n)
+    {
+        case 1: printf("You entered One!\n"); break;
+        case 2: printf("You entered Two!\n"); break;
+        case 3: printf("You entered Three!\n"); break;
+        default: printf("You entered something else!\n");
+    }
+
+    // 8. Loops
+    print_separator();
+    printf("8. Loops\n");
+    explain("for (int i = 0; i < 3; i++) ...", "Prints a message three times using a for loop.");
+    for (int i = 0; i < 3; i++)
+        printf("for loop: i = %i\n", i);
+
+    explain("int i = 0; while (i < 3) ...", "Prints a message three times using a while loop.");
+    int i = 0;
+    while (i < 3)
+    {
+        printf("while loop: i = %i\n", i);
+        i++;
+    }
+
+    explain("int j = 0; do ... while (j < 3);", "Prints a message three times using a do-while loop.");
+    int j = 0;
+    do
+    {
+        printf("do-while loop: j = %i\n", j);
+        j++;
+    }
+    while (j < 3);
+
+    // 9. Functions
+    print_separator();
+    printf("9. Functions\n");
+    explain("int add(int a, int b) { return a + b; }", "Defines a function to add two integers.");
+    int a = get_int("Enter a value for a: ");
+    int b = get_int("Enter a value for b: ");
+    printf("add(%i, %i) = %i\n", a, b, add(a, b));
+
+    // 10. String Comparison
+    print_separator();
+    printf("10. String Comparison\n");
+    explain("string s1 = get_string(...); string s2 = get_string(...);", "Get two strings from the user.");
+    string s1 = get_string("Enter a word: ");
+    string s2 = get_string("Enter another word: ");
+    explain("strcmp(s1, s2)", "Compares two strings. Returns 0 if they are the same.");
+    if (strcmp(s1, s2) == 0)
+        printf("The words are the same!\n");
+    else
+        printf("The words are different.\n");
+
+    // 11. 2D Output Example (Mario)
+    print_separator();
+    printf("11. 2D Output Example (Mario)\n");
+    explain("for (int i = 0; i < n; i++) { for (int j = 0; j < n; j++) printf(\"#\"); printf(\"\\n\"); }", "Prints a square of # characters.");
+    int size = get_int("Enter a size for the square: ");
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+            printf("#");
+        printf("\n");
+    }
+
+    print_separator();
+    printf("End of interactive fundamentals demo!\n");
+    return 0;
+}

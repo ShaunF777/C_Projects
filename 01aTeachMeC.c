@@ -100,81 +100,77 @@ int main(void)
     // 5. Logical Operators
     print_separator();
     printf("5. Logical Operators\n");
-    explain("if (x > 0 && y > 0) ...", "Checks if both x and y are positive.");
+    explain("if (x > 0 && y > 0) ...", "&& means AND. Checks if both x and(&&) y are positive.");
+    prinf("Remember that C uses logical operators to combine conditions into one single condition.\n");
     if (x > 0 && y > 0)
-        printf("Both x and y are positive.\n");
+        printf("Both x (%i) and y (%i) are positive.\n", x, y);
     else
-        printf("At least one of x or y is not positive.\n");
+        printf("At least one of x (%i) or y (%i) is not positive.\n", x, y);
 
-    explain("if (x > 0 || y > 0) ...", "Checks if at least one of x or y is positive.");
+    explain("if (x > 0 || y > 0) ...", "|| means OR. Checks if at least one of x or(||) y is positive.");
+    printf("If either x or y is positive, the condition will be true.\n");
     if (x > 0 || y > 0)
-        printf("At least one of x or y is positive.\n");
+        printf("At least one of x (%i) or y (%i) is positive.\n", x, y);
     else
-        printf("Neither x nor y is positive.\n");
-
-    // 6. Ternary Operator
-    print_separator();
-    printf("6. Ternary Operator\n");
-    explain("int max = (x > y) ? x : y;", "Assigns the greater of x or y to max.");
-    int max = (x > y) ? x : y;
-    printf("The greater value is: %i\n", max);
-
-    // 7. Switch Statement
-    print_separator();
-    printf("7. Switch Statement\n");
-    explain("switch (n) { case ... }", "Executes code based on the value of n.");
-    int n = get_int("Enter a number (1-3): ");
-    switch (n)
+        printf("Neither x (%i) nor y (%i) is positive.\n", x, y);
+    explain("if (!(x < y)) ...", "! means NOT. Inverts the condition.");
+    if (!(x < y))
+        printf("x (%i) is not less than y (%i).\n", x, y);
+    else
+        printf("x (%i) is less than y (%i).\n", x, y);
+    explain("if (x >= y) ...", "Checks if x is greater than or equal to y.");
+    if (x >= y)
+        printf("x (%i) is greater than or equal to y (%i).\n", x, y);
+    else
+        printf("x (%i) is less than y (%i).\n", x, y);
+    explain("if (x <= y) ...", "Checks if x is less than or equal to y.");
+    if (x <= y)
+        printf("x (%i) is less than or equal to y (%i).\n", x, y);
+    else
+        printf("x (%i) is greater than y (%i).\n", x, y);
+    explain("if (x == y) ...", "Checks if x is equal to y.");
+    if (x == y)
+        printf("x (%i) is equal to y (%i).\n", x, y);
+    else
+        printf("x (%i) is not equal to y (%i).\n", x, y);
+    explain("if (x != y) ...", "Checks if x is not equal to y.");
+    if (x != y)
+        printf("x (%i) is not equal to y (%i).\n", x, y);
+    else
+        printf("x (%i) is equal to y (%i).\n", x, y);
+    explain("if (x < y) ... else if (x == y) ... else ...", "Checks multiple conditions in sequence.");
+    if (x < y)
     {
-        case 1: printf("You entered One!\n"); break;
-        case 2: printf("You entered Two!\n"); break;
-        case 3: printf("You entered Three!\n"); break;
-        default: printf("You entered something else!\n");
+        printf("x (%i) is less than y (%i).\n", x, y);
     }
-
-    // 8. Loops
-    print_separator();
-    printf("8. Loops\n");
-    explain("for (int i = 0; i < 3; i++) ...", "Prints a message three times using a for loop.");
-    for (int i = 0; i < 3; i++)
-        printf("for loop: i = %i\n", i);
-
-    explain("int i = 0; while (i < 3) ...", "Prints a message three times using a while loop.");
-    int i = 0;
-    while (i < 3)
+    else if (x == y)
     {
-        printf("while loop: i = %i\n", i);
-        i++;
+        printf("x (%i) is equal to y (%i).\n", x, y);
     }
-
-    explain("int j = 0; do ... while (j < 3);", "Prints a message three times using a do-while loop.");
-    int j = 0;
-    do
+    else
     {
-        printf("do-while loop: j = %i\n", j);
-        j++;
+        printf("x (%i) is greater than y (%i).\n", x, y);
     }
-    while (j < 3);
 
     // 9. Functions
     print_separator();
     printf("9. Functions\n");
+    explain("int main(void)", "\"int\" Means it will return an integer value. \"main\"Is the primary function of program. "
+           "\"(void)\" Means no initial arguments are passed into the function.\n");
+    printf("The \"main\" function is where the program starts executing.\n");
+    explain("In any function \"return 0;\"", "Indicates successful program termination.");
+    printf("Returning 0 from main indicates that the program completed successfully.\n");
     explain("int add(int a, int b) { return a + b; }", "Defines a function to add two integers.");
     int a = get_int("Enter a value for a: ");
     int b = get_int("Enter a value for b: ");
     printf("add(%i, %i) = %i\n", a, b, add(a, b));
-
-    // 10. String Comparison
+    explain("void print_separator(void)", "Defines a function to print a separator line.");
     print_separator();
-    printf("10. String Comparison\n");
-    explain("string s1 = get_string(...); string s2 = get_string(...);", "Get two strings from the user.");
-    string s1 = get_string("Enter a word: ");
-    string s2 = get_string("Enter another word: ");
-    explain("strcmp(s1, s2)", "Compares two strings. Returns 0 if they are the same.");
-    if (strcmp(s1, s2) == 0)
-        printf("The words are the same!\n");
-    else
-        printf("The words are different.\n");
+    printf("This function prints a line to separate sections of output.\n");
+    explain("void explain(const char *code, const char *comment)", "Defines a function to print code and comment, then wait for user input.");
+    printf("The arguments passed in (const char *code, const char *comment) are each a string of characters used to explain the code and its purpose.\n");
+    printf("This function prints a code line with a comment and waits for the user to press Enter.\n");
+  
 
     // 11. 2D Output Example (Mario)
     print_separator();

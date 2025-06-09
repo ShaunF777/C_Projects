@@ -3,14 +3,6 @@
 #include <string.h>
 
 // Helper function to print code and comment, then wait for user
-void explain(const char *code, const char *comment)
-{
-    printf("\nCODE:    %s\n", code);
-    printf("COMMENT: %s\n", comment);
-    printf("Press Enter to continue...\n");
-    getchar();
-}
-
 int add(int a, int b)
 {
     return a + b;
@@ -19,6 +11,14 @@ int add(int a, int b)
 void print_separator(void)
 {
     printf("\n---------------------------------------------\n");
+}
+
+void explain(const char *code, const char *comment)
+{
+    printf("\nCODE:    %s\n", code);
+    printf("COMMENT: %s\n", comment);
+    printf("Press Enter to continue...\n");
+    getchar();
 }
 
 int main(void)
@@ -34,7 +34,8 @@ int main(void)
     printf("1. Comments, Input/Output and Headers\n");
     explain("// This is a single-line comment", "Comments are ignored by the compiler and help explain code to humans.");
     explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions like get_string and get_int.");
-    explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries. These libraries provide abstracted functions we need localy.");
+    explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries.\n"
+        "These libraries provide abstracted functions we need localy.");
     
     explain("string answer = get_string(\"What's your name? \");", "Prompt the user for their name and store it as a string.");
     string answer = get_string("What's your name? ");
@@ -61,7 +62,7 @@ int main(void)
 
     // 3. Arithmetic Operators
     printf("3. Arithmetic Operators and syntax\n");
-    explain("int x = get_int(\"x: \");\n       int y = get_int(\"y: \");", "Prompt the user for two integers.");
+    explain("int x = get_int(\"x: \");\n         int y = get_int(\"y: \");", "Prompt the user for two integers.");
     int x = get_int("x: ");
     int y = get_int("y: ");
 
@@ -82,7 +83,7 @@ int main(void)
 
     explain("printf(\"%i\\n\", x %% y);", "Print the remainder of x divided by y (modulo).");
     if (y != 0)
-        printf("Modulo: %i %% %i = %i as the remainder is 2 when deviding 7 by 5.\n", x, y, x % y);
+        printf("Modulo: %i %% %i = %i as the remainder is %i when deviding %i by %i.\n", x, y, x % y, x % y, x, y);
     else
         printf("Cannot modulo by zero!\n");
 
@@ -99,7 +100,10 @@ int main(void)
     print_separator();
     printf("5. Conditionals\n");
     explain("if (x < y) ... else if (x > y) ... else ...", "Compare x and y and print the relationship.");
-    printf("IF the condition(x < y) is true, THEN execute the following code, ELSE execute the following alternative code.\n");
+    printf("IF the condition(x < y) is true, \n"
+        "   THEN execute the following code, \n"
+        "   ELSE IF this condition is true, \n"
+        "   THEN execute the following alternative code.\n");
     if (x < y)
         printf("%i is less than %i\n", x, y);
     else if (x > y)
@@ -168,28 +172,35 @@ int main(void)
     // 7. Functions
     print_separator();
     printf("7. Functions\n");
-    explain("int main(void)", "\"int\" Means it will return an integer value. \"main\"Is the primary function of program. "
-           "\"(void)\" Means no initial arguments are passed into the function.\n");
+    explain("int main(void)", "\"int\" Means it will return an integer value.\n" 
+        "\"main\"Is the primary program function.\n "
+        "\"(void)\" Means no initial arguments are passed into the function.\n");
     printf("The \"main\" function is where the program starts executing.\n");
     explain("In any function \"return 0;\"", "Indicates successful program termination.");
     printf("Returning 0 from main indicates that the program completed successfully.\n");
     explain("int add(int a, int b) { return a + b; }", "Defines a function to add two integers.");
     int a = get_int("Enter a value for a: ");
     int b = get_int("Enter a value for b: ");
-    printf("add(%i, %i) = %i\n", a, b, add(a, b));
-    explain("void print_separator(void)", "Defines a function to print a separator line.");
+    printf("Look at the 1st function in the .c code. add(%i, %i) = %i\n", a, b, add(a, b));
+    explain("Now look at the 2nd function: void print_separator(void)", "Defines a function to print a separator line.");
     print_separator();
     printf("This function prints a line to separate sections of output.\n");
-    explain("void explain(const char *code, const char *comment)", "Defines a function to print code and comment, then wait for user input.");
-    printf("The arguments passed in (const char *code, const char *comment) are each a string of characters used to explain the code and its purpose.\n");
+    explain("The 3rd function is mostly used here: void explain(const char *code, const char *comment)", "Defines a function to print code and comment, then wait for user input.");
+    printf("The arguments passed in (const char *code, const char *comment)\n" 
+        "are each a string of characters used to explain the code and its purpose.\n");
     printf("This function prints a code line with a comment and waits for the user to press Enter.\n");
-    explain("int add(int a, int b);", "This is a function prototype (declaration), telling the compiler that a function named 'add' exists and takes two int arguments.");
+    explain("int add(int a, int b);", "This is a function prototype (declaration), telling \n" 
+        "the compiler that a function named 'add' exists and takes two int arguments.");
     printf("You can declare a function at the top of your file, then define it later.\n");
 
     // 8. Nested for loops. 2D Output Example (Mario)
     print_separator();
-    printf("8. 2D Output Example (Mario)\n");
-    explain("for (int i = 0; i < n; i++) { for (int j = 0; j < n; j++) printf(\"#\"); printf(\"\\n\"); }", "Prints a square of # characters. The outer loop iterates over rows, and the inner loop iterates over columns.");
+    printf("8. Nested for loop: 2D Output Example (Mario)\n");
+    explain("for (int i = 0; i < n; i++) \n"
+        "   { for (int j = 0; j < n; j++) \n"
+        "       printf(\"#\");\n"
+        "       printf(\"\\n\"); }", "Prints a square of # characters.\n"
+        "The outer loop iterates over rows, and the inner loop iterates over columns.");
     int size = get_int("Enter a size for the square: ");
     for (int i = 0; i < size; i++)
     {
@@ -199,7 +210,14 @@ int main(void)
     }
 
     print_separator();
-    printf("We have covered some basics of C programming, including commenting, basic data types, heaaders for input/output, arithmetic operations, typecasting floats, conditionals, logical operators, functions and loops.\n");
-    printf("Thank you. This is the end of the fundamentals demo 01aTeachMeC. Please execute the 01aQuiz to test your knowledge?\n");
+    printf("We have covered some basics of C programming including:\n" 
+        "Comments & headers for input/output\n"
+        "Arithmetic operations\n"
+        "Typecasting floats\n"
+        "Conditionals\n"
+        "Logical operators\n"
+        "Functions and loops.\n");
+    printf("This is the end of the fundamentals demo 01aTeachMeC.\n"
+        "Please execute the 01aQuiz to test your knowledge?\n");
     return 0;
 }

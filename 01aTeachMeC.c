@@ -29,10 +29,12 @@ int main(void)
     print_separator();
 
     // 1. Input/Output and Variables
-    explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions.");
+    explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions like get_string and get_int.");
+    explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries. These libraries provide abstracted functions we need localy.");
+
     explain("string answer = get_string(\"What's your name? \");", "Prompt the user for their name and store it as a string.");
     string answer = get_string("What's your name? ");
-    printf("Hello, %s! Let's get started.\n", answer);
+    printf("Hello, %s! Let's get started. It's best to follow the .c code while doing the exercise.\n", answer);
 
     // 2. Arithmetic Operators
     print_separator();
@@ -52,7 +54,7 @@ int main(void)
 
     explain("printf(\"%i\\n\", x / y);", "Print the integer division of x by y.");
     if (y != 0)
-        printf("Integer division: %i / %i = %i\n", x, y, x / y);
+        printf("Integer division: %i / %i = %i In C, deviding integers will trunc all decimals.\n", x, y, x / y);
     else
         printf("Cannot divide by zero!\n");
 
@@ -75,6 +77,7 @@ int main(void)
     print_separator();
     printf("4. Conditionals\n");
     explain("if (x < y) ... else if (x > y) ... else ...", "Compare x and y and print the relationship.");
+    printf("IF the condition(x < y) is true, THEN execute the following code, ELSE execute the following alternative code.\n");
     if (x < y)
         printf("%i is less than %i\n", x, y);
     else if (x > y)

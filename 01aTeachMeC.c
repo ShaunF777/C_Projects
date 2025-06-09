@@ -27,63 +27,62 @@ int main(void)
     printf("Welcome to the Interactive C Fundamentals Demo!\n");
     printf("This program will guide you through basic C concepts with code, comments, and interactive input.\n");
     print_separator();
-
-    explain("// This is a single-line comment", "Comments are ignored by the compiler and help explain code to humans.");
-
-    // 1. Basic Data Types, Declarations and Variables
+    
+    
+    // 1. Comments, Input/Output and Headers
     print_separator();
-    printf("1. Basic Data Types, Declarations and Variables\n");
-    explain("int x = 5;", "Declare an integer variable x and assign it the value 5.");
-    int x = 5;
-    printf("Declared x as an integer with value: %i\n", x);
-    explain("float y = 3.14;", "Declare a float variable y and assign it the value 3.14.");
-    float y = 3.14;
-    printf("Declared y as a float with value: %.2f\n", y);
-    explain("char z = 'A';", "Declare a char variable z and assign it the character 'A'.");
-    char z = 'A';
-    printf("Declared z as a char with value: %c\n", z);
+    printf("1. Comments, Input/Output and Headers\n");
+    explain("// This is a single-line comment", "Comments are ignored by the compiler and help explain code to humans.");
+    explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions like get_string and get_int.");
+    explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries. These libraries provide abstracted functions we need localy.");
+    
+    explain("string answer = get_string(\"What's your name? \");", "Prompt the user for their name and store it as a string.");
+    string answer = get_string("What's your name? ");
+    printf("Hello, %s! Let's get started. It's best to follow the .c code while doing the exercise.\n", answer);
+   
+    // 2. Basic Data Types, Declarations and Variables
+    print_separator();
+    printf("2. Basic Data Types, Declarations and Variables\n");
+    explain("int e = 5;", "Declare an integer variable e and assign it the value 5.");
+    int e = 5;
+    printf("Declared x as an integer with value: %i\n", e);
+    explain("float f = 3.14;", "Declare a float variable f and assign it the value 3.14.");
+    float f = 3.14;
+    printf("Declared f as a float with value: %.2f\n", f);
+    explain("char g = 'A';", "Declare a char variable g and assign it the character 'A'.");
+    char g = 'A';
+    printf("Declared g as a char with value: %c\n", g);
     explain("string name = \"Alice\";", "Declare a string variable name and assign it the value \"Alice\".");
     string name = "Alice";
     printf("Declared name as a string with value: %s\n", name);
     explain("bool is_valid = true;", "Declare a boolean variable is_valid and assign it the value true.");
     bool is_valid = true;
     printf("Declared is_valid as a boolean with value: %s\n", "true");
-  
-
-    // 2. Input/Output and Headers
-    print_separator();
-    printf("2. Input/Output and Headers\n");
-    explain("#include <cs50.h>\n#include <stdio.h>", "Include headers for input/output and CS50 functions like get_string and get_int.");
-    explain("#include <stdio.h>", "Headers are shortcuts for other .c file libraries. These libraries provide abstracted functions we need localy.");
-
-    explain("string answer = get_string(\"What's your name? \");", "Prompt the user for their name and store it as a string.");
-    string answer = get_string("What's your name? ");
-    printf("Hello, %s! Let's get started. It's best to follow the .c code while doing the exercise.\n", answer);
 
     // 3. Arithmetic Operators
     printf("3. Arithmetic Operators and syntax\n");
-    explain("int x = get_int(\"x: \");\nint y = get_int(\"y: \");", "Prompt the user for two integers.");
-    int xi = get_int("x: ");
-    int yi = get_int("y: ");
+    explain("int x = get_int(\"x: \");\n       int y = get_int(\"y: \");", "Prompt the user for two integers.");
+    int x = get_int("x: ");
+    int y = get_int("y: ");
 
     explain("printf(\"%i\\n\", x + y);", "Print the sum of x and y.");
-    printf("Sum: %i + %i = %i\n", xi, yi, xi + yi);
+    printf("Sum: %i + %i = %i\n", x, y, x + y);
 
     explain("printf(\"%i\\n\", x - y);", "Print the difference of x and y.");
-    printf("Difference: %i - %i = %i\n", xi, yi, xi - yi);
+    printf("Difference: %i - %i = %i\n", x, y, x - y);
 
     explain("printf(\"%i\\n\", x * y);", "Print the product of x and y.");
-    printf("Product: %i * %i = %i\n", xi, yi, xi * yi);
+    printf("Product: %i * %i = %i\n", x, y, x * y);
 
     explain("printf(\"%i\\n\", x / y);", "Print the integer division of x by y.");
-    if (yi != 0)
-        printf("Integer division: %i / %i = %i In C, deviding integers will trunc all decimals.\n", xi, yi, xi / yi);
+    if (y != 0)
+        printf("Integer division: %i / %i = %i In C, deviding integers will trunc all decimals.\n", x, y, x / y);
     else
         printf("Cannot divide by zero!\n");
 
     explain("printf(\"%i\\n\", x %% y);", "Print the remainder of x divided by y (modulo).");
-    if (yi != 0)
-        printf("Modulo: %i %% %i = %i\n", xi, yi, xi % yi);
+    if (y != 0)
+        printf("Modulo: %i %% %i = %i as the remainder is 2 when deviding 7 by 5.\n", x, y, x % y);
     else
         printf("Cannot modulo by zero!\n");
 
@@ -124,7 +123,7 @@ int main(void)
     print_separator();
     printf("6. Logical Operators\n");
     explain("if (x > 0 && y > 0) ...", "&& means AND. Checks if both x and(&&) y are positive.");
-    prinf("Remember that C uses logical operators to combine conditions into one single condition.\n");
+    printf("Remember that C uses logical operators to combine conditions into one single condition.\n");
     printf("Logical operators: && means AND, || means OR, ! means NOT.\n");
     if (x > 0 && y > 0)
         printf("Both x (%i) and y (%i) are positive.\n", x, y);
@@ -152,16 +151,6 @@ int main(void)
         printf("x (%i) is less than or equal to y (%i).\n", x, y);
     else
         printf("x (%i) is greater than y (%i).\n", x, y);
-    explain("if (x == y) ...", "Checks if x is equal to y.");
-    if (x == y)
-        printf("x (%i) is equal to y (%i).\n", x, y);
-    else
-        printf("x (%i) is not equal to y (%i).\n", x, y);
-    explain("if (x != y) ...", "Checks if x is not equal to y.");
-    if (x != y)
-        printf("x (%i) is not equal to y (%i).\n", x, y);
-    else
-        printf("x (%i) is equal to y (%i).\n", x, y);
     explain("if (x < y) ... else if (x == y) ... else ...", "Checks multiple conditions in sequence.");
     if (x < y)
     {

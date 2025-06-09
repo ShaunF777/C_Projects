@@ -15,6 +15,14 @@ CFLAGS = -lcs50
 %: %.c
 	$(CC) $< $(CFLAGS) -o $@
 
+# Clean target: removes all compiled executables
+# This finds all .c files, strips the .c extension, and removes the corresponding executables
+clean:
+	rm -f $(patsubst %.c,%,$(wildcard *.c))
+
+# Mark clean as a phony target (it doesn't create a file named "clean")
+.PHONY: clean
+
 # Usage:
-#   make 01hello
-# This will compile 01hello.c into an executable named 01hello, linking with the CS50 library.
+#   make 01hello    - compiles 01hello.c into executable 01hello
+#   make clean      - removes all compiled executables

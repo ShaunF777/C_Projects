@@ -8,21 +8,38 @@ int main(void)
     int total = 10;
     bool correct[10] = {false};
     string criteria[10] = {
-        "Arithmetic Operators",
-        "Modulo Operator",
-        "Logical Operators",
-        "Relational Operators",
-        "Conditional Statements",
-        "Ternary Operator",
-        "Switch Statement",
-        "For Loop",
-        "While/Do-While Loop",
-        "String Functions"
+        "1.  Arithmetic Operators",
+        "2.  Modulo Operator",
+        "3.  Logical Operators",
+        "4.  Relational Operators",
+        "5.  Conditional Statements",
+        "6.  Ternary Operator",
+        "7.  Switch Statement",
+        "8.  For Loop",
+        "9.  While/Do-While Loop",
+        "10. String Functions"
+    };
+
+    string examples[10] = {
+        "e.g., x *= 4; or y += 3; or z -= 1; or a /= 2;",
+        "e.g., 17 % 5; or 10 % 3;",
+        "e.g., (5 > 3 && 2 < 1); or (x || y); or (a && b);",
+        "e.g., (x == y); or (a != b); or (c < d);",
+        "e.g., if (x < y) ... else ...",
+        "e.g., int z = (x != y) ? x : y;",
+        "e.g., switch(n) { case 1: ... }",
+        "e.g., for (int i = 0; i < 4; i++) { ... }",
+        "e.g., while (condition) { ... } or do { ... } while (condition);",
+        "e.g., strcmp(\"dog\", \"cat\") or strlen(\"hello\");"
     };
 
     printf("Welcome to the C Fundamentals Quiz!\n");
     string name = get_string("What's your name? ");
-    printf("Hello, %s! Let's test your C knowledge.\n", name);
+    printf("Hello, %s! Let's test your C knowledge on the following:\n", name);
+    for (int i = 0; i < total; i++)
+        {
+            printf(" - %s  %s\n", criteria[i], examples[i]);
+        }
 
     // 1. Arithmetic Operators
     printf("\n1. What is the value of x after this code?\n");
@@ -71,7 +88,7 @@ int main(void)
 
     // 5. Conditional Statements
     printf("\n5. If x = 10 and y = 20, what will this code print?\n");
-    printf("if (x < y) printf(\"A\"); else printf(\"B\");\n");
+    printf("if (x < y)\n    printf(\"A\");\n    else printf(\"B\");\n"); 
     char ans5 = get_char("Your answer (A/B): ");
     if (ans5 == 'A' || ans5 == 'a')
     {
@@ -95,7 +112,7 @@ int main(void)
 
     // 7. Switch Statement
     printf("\n7. What will this code print if n = 2?\n");
-    printf("switch(n) { case 1: printf(\"One\"); break; case 2: printf(\"Two\"); break; default: printf(\"Other\"); }\n");
+    printf("switch(n) { case 1: printf(\"One\"); break;\n case 2: printf(\"Two\"); break;\n default: printf(\"Other\"); }\n");
     string ans7 = get_string("Your answer: ");
     if (strcmp(ans7, "Two") == 0 || strcmp(ans7, "two") == 0)
     {
@@ -107,7 +124,7 @@ int main(void)
 
     // 8. For Loop
     printf("\n8. How many times will this loop print \"Hi\"?\n");
-    printf("for (int i = 0; i < 4; i++) printf(\"Hi\");\n");
+    printf("for (int i = 0; i < 4; i++)\n    printf(\"Hi\");\n");
     int ans8 = get_int("Your answer: ");
     if (ans8 == 4)
     {
@@ -154,7 +171,7 @@ int main(void)
             if (!correct[i])
                 printf(" - %s\n", criteria[i]);
         }
-        printf("Go back to the learning program and review these sections.\n");
+        printf("Go back to the learning program 01bTeachMeC and review these sections.\n");
     }
     printf("Thank you for taking the quiz, %s!\n", name);
     return 0;
